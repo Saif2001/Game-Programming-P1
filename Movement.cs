@@ -5,14 +5,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    public Transform Weapon;
-
-
-    int myInt = 125;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(myInt);
+
     }
 
 
@@ -57,7 +53,7 @@ public class Movement : MonoBehaviour
         if (jump)
         {
 
-            transform.Translate(20 * Vector3.up * Time.deltaTime);
+            transform.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 2000f, 0f));
 
         }
 
