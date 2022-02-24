@@ -5,18 +5,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-
-
-    // Update is called once per frame
     void Update()
     {
 
+        //Different axes according to Unity's input manager
         bool moveHor = Input.GetButton("Horizontal");
         bool moveFwd = Input.GetButton("Vertical");
 
@@ -27,6 +19,7 @@ public class Movement : MonoBehaviour
 
         if (moveFwd)
         {
+            //Forward and backward movement
             if (directionFwd > 0)
             {
                 transform.Translate(10* Vector3.forward * Time.deltaTime);
@@ -40,6 +33,7 @@ public class Movement : MonoBehaviour
 
         if (moveHor)
         {
+            //Left and Right movement
             if (directionHor > 0)
             {
                 transform.Translate(10 * Vector3.right * Time.deltaTime);
@@ -52,6 +46,7 @@ public class Movement : MonoBehaviour
 
         if (jump)
         {
+            //Addforce is more organic than translating in y direction
 
             transform.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 2000f, 0f));
 

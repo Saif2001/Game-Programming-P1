@@ -6,13 +6,10 @@ using UnityEngine;
 
 public class CrowdAI : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float raycastLength = 10f;
 
 
-    // Update is called once per frame
-
-
+    //Visualising Raycasts
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, -transform.right * (raycastLength));
@@ -24,27 +21,24 @@ public class CrowdAI : MonoBehaviour
 
     void Update()
     {
-        //Ray frontSensor = Physics.Raycast(transform.position, transform.forward, (raycastLength + transform.localScale.x));
+        //Move forward
         transform.Translate(-Vector3.right * 0.03f);
 
+        //When an obstacle is detected to the front, left or right, delay reaction to prevent twitchiness
         if (Physics.Raycast(transform.position, - transform.right, raycastLength))
         {
             transform.Translate(Vector3.right * 0.03f);
-            //Debug.Log("Something there");
-            //transform.Rotate(new Vector3(0f, 0f, -0.2f));
             Invoke("delayTurn", 2);
         }
 
         if (Physics.Raycast(transform.position, transform.right, raycastLength))
         {
-            //Debug.Log("Something there");
             transform.Rotate(new Vector3(0f, 0f, 0.2f));
             Invoke("delayTurn", 2);
         }
 
         if (Physics.Raycast(transform.position, transform.up, raycastLength))
         {
-            //Debug.Log("Something there");
             Invoke("delayTurn", 2);
         }
 
@@ -52,7 +46,7 @@ public class CrowdAI : MonoBehaviour
 
     void delayTurn()
     {
-        float randTurnAngle = Random.Range(-0.5f, 0.2f);
+        float randTurnAngle = Random.Range(-0.5f, 0.2f);            //Random turn angle for unpredictability
         transform.Rotate(new Vector3(0f, 0f, randTurnAngle));
     }
 

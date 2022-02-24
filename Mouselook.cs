@@ -13,53 +13,35 @@ public class Mouselook : MonoBehaviour
 
     float xRotation = 0f;
 
-    public bool CanFireOffGround;
 
-    public Intro other;
-
-    // Start is called before the first frame update
     void Start()
     {
-        //playerObject.position = new Vector3(-27.67f, 8.21f, -23.14f);
-        //playerObject.Rotate(20f, -138.6f, 0.452f);
 
-        //yield return new WaitForSeconds(5);
-        //playerObject.Rotate(0f, 0f, 0f);
-
-        Cursor.lockState = CursorLockMode.Locked;   
+        Cursor.lockState = CursorLockMode.Locked;       //Keep cursor from clicking off screen
    
     }
 
 
 // Update is called once per frame
-void Update()
+    void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * Sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * Sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * Sensitivity * Time.deltaTime;         //Time.deltaTime makes mouse movement insensitive to framerate
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation -= mouseY;        //Rotation around central axis
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);          //Cannot "loop" around own head with this line
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerObject.Rotate(Vector3.up * mouseX);
+        playerObject.Rotate(Vector3.up * mouseX);           //Relating rotational vector to mouse movement
 
         float lookRotation = Vector3.SignedAngle(Vector3.up, transform.up, transform.forward);
-        //float lookRotationZ = playerCam.eulerAngles.z;
         Quaternion inverseRotation = Quaternion.Inverse(transform.localRotation);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))           //Ballista
         {
-            //playerObject.Translate(0f, lookRotation * 0.001f, -0.5f) ;
-            playerObject.GetComponent<Rigidbody>().AddForce((-transform.forward) * 75, ForceMode.Impulse);
+           
+            playerObject.GetComponent<Rigidbody>().AddForce((-transform.forward) * 75, ForceMode.Impulse);      //Movement impulse for high speed
         }
-
-
-        // Debug.Log("Camera Rotation X: " + playerCam.eulerAngles.x);
-        //Debug.Log("Camera Rotation Y: " + playerCam.eulerAngles.y);
-        //Debug.Log("Camera Rotation Z: " + playerCam.eulerAngles.z);
-
- 
-
         
     }
 }

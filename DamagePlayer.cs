@@ -6,9 +6,11 @@ public class DamagePlayer : MonoBehaviour
 {
     public GameObject Player;
 
-    // Start is called before the first frame update
+
+    // Attached to enemy bullet and will damage player
     void OnTriggerEnter(Collider other)
     {
+        //Decrement Health
         if (other.tag == "Player")
         {
             Weapon player = Player.GetComponent<Weapon>();

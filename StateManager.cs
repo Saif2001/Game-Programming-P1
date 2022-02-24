@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public States currentState;
-    // Update is called once per frame
+
     void Update()
     {
         RunSM();
@@ -14,7 +14,7 @@ public class StateManager : MonoBehaviour
 
     private void RunSM()
     {
-        States nextState = currentState?.RunCurrentState();
+        States nextState = currentState.RunCurrentState();
 
         if(nextState != null)
         {
