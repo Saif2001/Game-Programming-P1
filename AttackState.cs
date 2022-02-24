@@ -15,6 +15,7 @@ public class AttackState : States
     public Transform Enemy;
     public Transform Player;
 
+
     public Transform EnemyBulletSpawn;
     public GameObject Enemy_Bullet;
 
@@ -87,9 +88,10 @@ public class AttackState : States
         reloadTime = 3f;
         }
 
+        
 
     }
 
-
+ 
 
 }
