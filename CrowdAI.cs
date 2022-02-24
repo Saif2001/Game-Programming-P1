@@ -30,21 +30,21 @@ public class CrowdAI : MonoBehaviour
         if (Physics.Raycast(transform.position, - transform.right, raycastLength))
         {
             transform.Translate(Vector3.right * 0.03f);
-            Debug.Log("Something there");
+            //Debug.Log("Something there");
             //transform.Rotate(new Vector3(0f, 0f, -0.2f));
             Invoke("delayTurn", 2);
         }
 
         if (Physics.Raycast(transform.position, transform.right, raycastLength))
         {
-            Debug.Log("Something there");
+            //Debug.Log("Something there");
             transform.Rotate(new Vector3(0f, 0f, 0.2f));
             Invoke("delayTurn", 2);
         }
 
         if (Physics.Raycast(transform.position, transform.up, raycastLength))
         {
-            Debug.Log("Something there");
+            //Debug.Log("Something there");
             Invoke("delayTurn", 2);
         }
 

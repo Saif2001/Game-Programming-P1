@@ -29,11 +29,11 @@ public class Movement : MonoBehaviour
         {
             if (directionFwd > 0)
             {
-                transform.Translate(5* Vector3.forward * Time.deltaTime);
+                transform.Translate(10* Vector3.forward * Time.deltaTime);
             }
             if(directionFwd < 0)
             {
-                transform.Translate(5* Vector3.back * Time.deltaTime);
+                transform.Translate(10* Vector3.back * Time.deltaTime);
             }
         }
 
@@ -42,11 +42,11 @@ public class Movement : MonoBehaviour
         {
             if (directionHor > 0)
             {
-                transform.Translate(5 * Vector3.right * Time.deltaTime);
+                transform.Translate(10 * Vector3.right * Time.deltaTime);
             }
             if (directionHor < 0)
             {
-                transform.Translate(5 * Vector3.left * Time.deltaTime);
+                transform.Translate(10 * Vector3.left * Time.deltaTime);
             }
         }
 
